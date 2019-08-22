@@ -13,7 +13,7 @@ public class StringUtils {
 	* 方法1：批量关闭流，参数能传入无限个。(10分)
 	* 例如传入FileInputStream对象、JDBC中Connection对象都可以关闭，并且参数个数不限。
 	*/
-	public static void closeAll(Closeable[] c) throws IOException{
+	public static void closeAll(Closeable...c) throws IOException{
 		for (Closeable closeable : c) {
 			closeable.close();
 		}
@@ -27,10 +27,10 @@ public class StringUtils {
 		while(src.read(b)!=-1) {
 			str+=new String(b);
 		};
-		/*Closeable[] c = null;
-		c[0]=f;
-		closeAll(c);*/
-		src.close();
+		
+	closeAll(src);
+		
+		
 		return str;
 	}
 	/*
